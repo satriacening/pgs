@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pgs_certificate_tree_views" model="ir.ui.view">
+        <field name="name">pgs.certificate.tree.views</field>
+        <field name="model">pgs.certificate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="instrument_name"/>
+                <field name="manufacturer"/>
+                <field name="type"/>
+                <field name="serial_number"/>
+                <field name="detection_principle"/>
+                <field name="location"/>
+                <field name="calibration_date"/>
+                <field name="next_calibration_date"/>
+                <field name="certification_number"/>
+                <field name="owner_name"/>
+                <field name="owner_vessel"/>
+                <field name="page"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="pgs_certificate_form_views" model="ir.ui.view">
+        <field name="name">pgs.certificate.form.views</field>
+        <field name="model">pgs.certificate</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="instrument_name"/>
+                            <field name="manufacturer"/>
+                            <field name="type"/>
+                            <field name="serial_number"/>
+                            <field name="detection_principle"/>
+                            <field name="location"/>
+                            <field name="calibration_date"/>
+                            <field name="next_calibration_date"/>
+                        </group>
+                        <group>
+                            <field name="certification_number"/>
+                            <field name="owner_name"/>
+                            <field name="owner_vessel"/>
+                            <field name="page"/>
+                            <field name="cylinder_gas"/>
+                            <field name="traceable_through"/>
+                            <field name="calibration_procedure"/>
+                            <field name="inspector"/>
+                            <field name="inspected_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Calibration Result">
+                            <field name="certification_line_ids">
+                                <tree>
+                                    <field name="parameter"/>
+                                    <field name="measuring_range"/>
+                                    <field name="calibration_gas"/>
+                                    <field name="before_cal"/>
+                                    <field name="after_cal"/>
+                                    <field name="alarm_point"/>
+                                    <field name="alarm_work"/>
+                                    <field name="type_sensor"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

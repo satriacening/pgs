@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_pgs_certificate" model="ir.actions.act_window">
+        <field name="name">Certificates</field>
+        <field name="res_model">pgs.certificate</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_pgs_certificate"
+        action="action_pgs_certificate"
+        name="Certificate List" parent="contacts.res_partner_menu_config"
+        sequence="4"/>
+</odoo>

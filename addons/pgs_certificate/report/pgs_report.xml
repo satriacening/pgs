@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_pgs_certificate">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page" style="font-family: 'Times New Roman', Times, serif; font-size: 9px; line-height: 1.5; margin: 5px 10px;">
+                    <!-- Judul -->
+                    <h2 style="text-align: center; font-size: 22px; font-weight: bold; color: #1F4E78; text-transform: uppercase;">
+                        CERTIFICATE OF CALIBRATION
+                    </h2>
+                    <table width="100%" border="0" style="border-collapse: collapse; text-align: left;">
+                        <tr>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Identitas Alat</strong></td>
+                            <td/>
+                            <td/>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nomor Sertifikat</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.certification_number"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Instrument's Details</i></td>
+                            <td/>
+                            <td/>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Certificate Number</i></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama Alat</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.instrument_name"/></td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Halaman</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.page"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Instrument's Name</i></td>
+                            <td/>
+                            <td/>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Page</i></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Pabrik</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.manufacturer"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Manufacturer</i></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tipe</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.type"/></td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Identitas Pemilik</strong></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Type</i></td>
+                            <td/>
+                            <td/>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Owner Details</i></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nomor Seri/ID</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.serial_number"/></td>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Serial Number/ID</i></td>
+                            <td/>
+                            <td/>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Name</i></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Pembuatan</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.create_date"/></td>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Kapal</strong> </td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_vessel"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Created Date</i></td>
+                            <td/>
+                            <td/>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Vessel</i></td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Prinsip Deteksi</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.detection_principle"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Detection Principle</i></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Lokasi</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.location"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Kalibrasi</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.calibration_date"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Calibration Date</i></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Kalibrasi Selanjutnya</strong></td>
+                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.next_calibration_date"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Next Calibration</i></td>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                    </table>
+                    <h2 style="text-align: center; font-size: 22px; font-weight: bold; color: #1F4E78; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px; line-height: 1.2;">
+                        <strong>HASIL KALIBRASI</strong>/<i>CALIBRATION RESULT</i>
+                    </h2>
+                    <table border="1" width="100%" style="border-collapse: collapse; text-align: center;">
+                        <thead>
+                            <tr>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Parameter</th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Rentang Ukur</th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Gas<br/>Kalibrasi</th>
+                                <th colspan="2" style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;"><b>Penunjukan Alat</b><br/><i>Instrument's Reading</i></th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;" colspan="2"><i>Kerja Alarm</i></th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Tipe Sensor</th>
+                            </tr>
+                            <tr>
+                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Parameter</i></th>
+                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Measuring Range</i></th>
+                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Calibration<br/>Gas</i></th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Sebelum Kal.<br/><i style="font-weight: normal;">Before Cal.</i></th>
+                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Setelah Kal.<br/><i style="font-weight: normal;">After Cal.</i></th>
+                                <th style="padding: 1px 5px; line-height: 1; vertical-align: middle;">Titik Alarm<br/><i style="font-weight: normal;">Alarm Point</i></th>
+                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Alarm</i><br/><i>Work</i></th>
+                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Type Sensor</i></th>
+                            </tr>
+                        </thead>
+                        <t t-set="total_rows" t-value="6"/>  <!-- Total baris yang ingin ditampilkan -->
+                        <t t-set="data_rows" t-value="doc.certification_line_ids"/>  <!-- Data yang tersedia -->
+                        <t t-set="empty_rows" t-value="total_rows - len(data_rows)"/>  <!-- Hitung jumlah baris kosong -->
+
+                        <tbody>
+                            <!-- Loop untuk data yang ada -->
+                            <t t-foreach="data_rows" t-as="line">
+                                <tr>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.parameter"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.measuring_range"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.calibration_gas"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.before_cal"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.after_cal"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.alarm_point"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.alarm_work"/></td>
+                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.type_sensor"/></td>
+                                </tr>
+                            </t>
+
+                            <!-- Loop untuk menampilkan baris kosong jika kurang dari 6 -->
+                            <t t-if="empty_rows &gt; 0">
+                                <t t-foreach="range(empty_rows)" t-as="i">
+                                    <tr>
+                                        <td style="height: 20px; padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                        <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <!-- Footer -->
+                    <table width="100%" border="0" style="border-collapse: collapse; text-align: left;">
+                        <tr>
+                            <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"><strong>Keterangan</strong> / <i>Note</i></td>
+                            <td style="width: 30px; vertical-align: top;">:</td>
+                            <td>
+                                <strong>Hasil kalibrasi hanya berlaku untuk instrument yang dikalibrasi sesuai dengan data diatas</strong><br/>
+                                <i>The calibration results only apply to calibrated instruments according to the above data</i><br/>
+                                <strong>Alat ini harus dikalibrasi ulang sesuai jadwal yang direkomendasikan.</strong><br/>
+                                <i>This instrument must be recalibrated according to the recommended schedule.</i><br/>
+                                <strong>Jika ditemukan penyimpangan, segera lakukan tindakan korektif.</strong><br/>
+                                <i>If any deviation is found, corrective action should be taken immediately.</i>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%" border="0" style="border-collapse: collapse; text-align: left;">
+                        <tr>
+                            <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Gas Silinder</strong> / <i>Cylinder Gas</i></td>
+                            <td style="width: 30px; vertical-align: top; padding-top: 1px; padding-bottom: 1px;">:</td>
+                            <td style="padding-top: 1px; padding-bottom: 1px;"><t t-esc="doc.cylinder_gas"/></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Tertelusur ke SI melalui</strong> / <i>Traceable to SI through</i></td>
+                            <td style="width: 30px; vertical-align: top; padding-top: 1px; padding-bottom: 1px;">:</td>
+                            <td style="padding-top: 1px; padding-bottom: 1px;"><t t-esc="doc.traceable_through"/></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Prosedur Kalibrasi</strong> / <i>Calibration Procedure</i></td>
+                            <td style="width: 30px; vertical-align: top; padding-top: 1px; padding-bottom: 1px;">:</td>
+                            <td style="padding-top: 1px; padding-bottom: 1px;"><t t-esc="doc.calibration_procedure"/></td>
+                        </tr>
+                    </table>
+                    <table style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                        <tr>
+                            <td style="width: 60%;"></td>
+                            <td style="width: 40%; text-align: left; padding-top: 5px; padding-bottom: 5px;">
+                                <p style="margin-top: 5px; margin-bottom: 5px;">Inspected on : <span style="text-decoration: underline;"><t t-esc="doc.calibration_procedure"/></span></p>
+                                <p style="margin-top: 5px; margin-bottom: 5px;">Inspector    : <span style="text-decoration: underline;"><t t-esc="doc.inspector"/></span></p>
+                                <div>
+                                    <t t-set="base_url" t-value="env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                                    <img t-att-src="base_url + '/pgs_certificate/static/image/img.png'"
+                                        alt="Classic" style="margin: 0 auto;"/>
+                                </div>
+                                <p style="margin-top: 5px; margin-bottom: 5px;"/>
+                                <p>_________________________</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style="text-align:center; margin-top: 20px;">
+                        -------------------- End of Certificate --------------------
+                    </p>
+                </div>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_pgs_certificate" model="ir.actions.report">
+        <field name="name">Calibration Certificate</field>
+        <field name="model">pgs.certificate</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pgs_certificate.report_pgs_certificate</field>
+        <field name="report_file">pgs_certificate.report_pgs_certificate</field>
+        <field name="binding_model_id" ref="model_pgs_certificate"/>
+        <field name="binding_view_types"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

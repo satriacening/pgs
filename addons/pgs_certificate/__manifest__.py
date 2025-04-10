@@ -5,13 +5,15 @@
     "summary": "Certificate for Contact res.partner",
     "author": "Satria Putra | satriacening@gmail.com",
     "depends": [
-        "base"
+        "base",
+        "website"
     ],
     "data": [
         "security/ir.model.access.csv",
 
         "views/pgs_certificate_views.xml",
         "views/action_menuitem.xml",
+        "views/certificate_search_template.xml",
 
         "report/pgs_report.xml"
     ],

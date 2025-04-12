@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_certificate" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.certificate</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Certificates">
+                    <field name="certificate_ids">
+                        <tree editable="bottom">
+                            <field name="instrument_name"/>
+                            <field name="manufacturer"/>
+                            <field name="type"/>
+                            <field name="serial_number"/>
+                            <field name="detection_principle"/>
+                            <field name="location"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

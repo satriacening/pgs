@@ -11,6 +11,7 @@
     "data": [
         "security/ir.model.access.csv",
 
+        "views/res_partner_views.xml",
         "views/pgs_certificate_views.xml",
         "views/action_menuitem.xml",
         "views/certificate_search_template.xml",

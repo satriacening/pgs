@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template id="certificate_search_template" name="Certificate Search Form">
+    <t t-call="website.layout">
+      <div class="container mt-5">
+        <h2>Cari Sertifikat Kalibrasi</h2>
+        <form method="get" action="/certificate/search" class="mb-4">
+          <div class="form-group">
+            <label>Nomor Sertifikat</label>
+            <input type="text" name="certification_number" class="form-control"
+                   t-att-value="certification_number"/>
+          </div>
+          <div class="form-group">
+            <label>Serial Number</label>
+            <input type="text" name="serial_number" class="form-control"
+                   t-att-value="serial_number"/>
+          </div>
+          <div class="form-group">
+            <label>Nama Instrumen</label>
+            <input type="text" name="instrument_name" class="form-control"
+                   t-att-value="instrument_name"/>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Cari</button>
+        </form>
+
+        <t t-if="results">
+          <h4>Hasil Pencarian:</h4>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nama Instrumen</th>
+                <th>Serial Number</th>
+                <th>Nomor Sertifikat</th>
+                <th>Tanggal Kalibrasi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="results" t-as="cert">
+                <tr>
+                  <td><t t-esc="cert.instrument_name"/></td>
+                  <td><t t-esc="cert.serial_number"/></td>
+                  <td><t t-esc="cert.certification_number"/></td>
+                  <td><t t-esc="cert.calibration_date"/></td>
+                  <td>
+                    <a t-attf-href="/certificate/report/{{ cert.id }}"
+                       target="_blank"
+                       class="btn btn-sm btn-outline-secondary">
+                      Download
+                    </a>
+                  </td>
+                  </tr>
+              </t>
+            </tbody>
+          </table>
+        </t>
+        <t t-if="not results and (certification_number or serial_number or instrument_name)">
+          <p class="alert alert-warning">Tidak ditemukan data sesuai pencarian.</p>
+        </t>
+      </div>
+    </t>
+  </template>
+</odoo>

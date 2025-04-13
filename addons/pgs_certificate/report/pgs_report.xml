@@ -102,7 +102,7 @@
                             <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.serial_number"/></td>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama</strong></td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name"/></td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name.name"/></td>
                         </tr>
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Serial Number/ID</i></td>
@@ -290,8 +290,12 @@
                         <tr>
                             <td style="width: 60%;">
                                 <div style="margin-top: 20px;">
-                                    <img t-att-src="base_url + '/pgs_certificate/static/image/qr-code.jpeg'"
-                                            alt="Classic" style="margin: 0 auto; max-width: 130px"/>
+<!--                                    <img t-att-src="base_url + '/pgs_certificate/static/image/qr-code.jpeg'"-->
+<!--                                            alt="Classic" style="margin: 0 auto; max-width: 130px"/>-->
+                                    <img t-if="doc.barcode"
+                                         t-att-src="image_data_uri(doc.barcode)"
+                                         alt="Barcode"
+                                         style="margin: 0 auto; max-width: 130px"/>
                                 </div>
                             </td>
                             <td style="width: 40%; text-align: left; padding-top: 5px; padding-bottom: 5px;">
@@ -307,10 +311,18 @@
                                         <td style="text-decoration: underline;"><t t-esc="doc.inspector"/></td>
                                     </tr>
                                 </table>
+                                <t t-set="signature" t-value="env['ir.config_parameter'].sudo().get_param('pgs_certificate.signature')"/>
                                 <div>
-                                    <img t-att-src="base_url + '/pgs_certificate/static/image/img.png'"
-                                        alt="Classic" style="margin: 0 auto;"/>
+                                    <img t-if="doc.signature"
+                                         t-att-src="image_data_uri(doc.signature)"
+                                         alt="Signature"
+                                         style="margin: 0 auto;"/>
                                 </div>
+
+<!--                                <div>-->
+<!--                                    <img t-att-src="base_url + '/pgs_certificate/static/image/img.png'"-->
+<!--                                        alt="Classic" style="margin: 0 auto;"/>-->
+<!--                                </div>-->
                                 <!-- <p style="margin-top: 5px; margin-bottom: 5px;"/>
                                 <p>_________________________</p> -->
                             </td>

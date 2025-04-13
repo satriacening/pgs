@@ -21,6 +21,31 @@
         </field>
     </record>
 
+    <record id="pgs_certificate_line_form_views" model="ir.ui.view">
+        <field name="name">pgs.certificate.line.form.views</field>
+        <field name="model">pgs.certificate.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="parameter"/>
+                            <field name="measuring_range"/>
+                            <field name="calibration_gas"/>
+                            <field name="before_cal"/>
+                        </group>
+                        <group>
+                            <field name="alarm_point"/>
+                            <field name="alarm_work"/>
+                            <field name="type_sensor"/>
+                            <field name="after_cal"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="pgs_certificate_form_views" model="ir.ui.view">
         <field name="name">pgs.certificate.form.views</field>
         <field name="model">pgs.certificate</field>
@@ -52,7 +77,7 @@
                     </group>
                     <notebook>
                         <page string="Calibration Result">
-                            <field name="certification_line_ids">
+                            <field name="certification_line_ids"  context="{'form_view_ref': 'pgs_certificate.pgs_certificate_line_form_views'}">
                                 <tree>
                                     <field name="parameter"/>
                                     <field name="measuring_range"/>

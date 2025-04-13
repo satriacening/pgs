@@ -102,7 +102,7 @@
                             <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.serial_number"/></td>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama</strong></td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name"/></td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name.name"/></td>
                         </tr>
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Serial Number/ID</i></td>

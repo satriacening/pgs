@@ -3,37 +3,47 @@
     <template id="report_pgs_certificate">
         <t t-set="base_url" t-value="env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
         <t t-call="web.html_container">
-            <style>
-                table.header-table, table.footer-table, .header table, .footer table {
-                    border: none !important;
-                    border-collapse: collapse !important;
-                }
+            <style type="text/css">
+                    .main-content-table {
+                        border-collapse: collapse;
+                        font-size: 12px !important;
+                        width: 100%;
+                        text-align: center;
+                    }
 
-                .header-table td, .footer-table td {
-                    border: none !important;
-                }
+                    .main-content-table th {
+                        padding: 3px 5px;
+                        font-weight: bold;
+                        line-height: 1; 
+                        vertical-align: middle;
+                    }
+
+                    .main-content-table td {
+                        padding: 3px 5px;
+                        line-height: 1; 
+                        vertical-align: middle;
+                    }
             </style>
+
             <div class="header">
-                <div class="certificate-header" style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px;">
-                    <table class="header-table" border="0" style="border-collapse: collapse; width: 100%; max-width: 800px; text-align: center;">
-                        <tr>
-                            <td class="logo-cell" style="width: 20%; vertical-align: middle;">
-                                <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" class="logo-img" style="max-width: 100%; height: auto;"/>
-                            </td>
-                            <td class="org-info" style="width: 80%; text-align: left; vertical-align: middle;">
-                                <div class="org-name" style="font-family: 'Times New Roman', serif; font-size: 27px; font-weight: bold; color: red; margin-bottom: 4px; white-space:nowrap;">
-                                    PT. PRATAMA GRAHA SEMESTA
-                                </div>
-                                <div class="org-contact" style="font-family: Arial, sans-serif; font-size: 11px; margin-bottom: 2px;">
-                                    We are solution provider for instrument, control, electrical, lighting and scientific product. <br/>
-                                    We are long history for providing a solution to our satisfied customer for Field Instrument, Metering System. <br/>
-                                    Control, Data Acquisition, Gas &amp; Water Analyzer, Environment Monitoring &amp; Solution, Sampling Handling System &amp; Total <br/>
-                                    Solution for Laboratory.
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                <table style="width: 100%;  border-collapse: collapse; text-align: center;">
+                    <tr>
+                        <td style="width: 20%; vertical-align: middle;">
+                            <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" class="logo-img" style="max-width: 100%; height: auto;"/>
+                        </td>
+                        <td style="width: 80%; text-align: left; vertical-align: middle;">
+                            <div style="font-family: 'Times New Roman', serif; font-size: 27px; font-weight: bold; color: red; margin-bottom: 4px; white-space:nowrap;">
+                                PT. PRATAMA GRAHA SEMESTA
+                            </div>
+                            <div style="font-family: Arial, sans-serif; font-size: 11px; margin-bottom: 2px;">
+                                We are solution provider for instrument, control, electrical, lighting and scientific product. <br/>
+                                We are long history for providing a solution to our satisfied customer for Field Instrument, Metering System. <br/>
+                                Control, Data Acquisition, Gas &amp; Water Analyzer, Environment Monitoring &amp; Solution, Sampling Handling System &amp; Total <br/>
+                                Solution for Laboratory.
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <t t-foreach="docs" t-as="doc">
                 <div class="page" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; line-height: 1.5; margin: 5px 10px; ">
@@ -206,25 +216,25 @@
                     <h2 style="text-align: center; font-size: 16px; font-weight: bold; color: #1F4E78; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px; line-height: 1.2;">
                         <strong>HASIL KALIBRASI</strong>/<i>CALIBRATION RESULT</i>
                     </h2>
-                    <table border="1" width="100%" style="border-collapse: collapse; text-align: center; font-size: 12px !important">
+                    <table border="1" class="main-content-table">
                         <thead>
                             <tr>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Parameter</th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Rentang Ukur</th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Gas<br/>Kalibrasi</th>
-                                <th colspan="2" style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;"><b>Penunjukan Alat</b><br/><i>Instrument's Reading</i></th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;" colspan="2"><i>Kerja Alarm</i></th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Tipe Sensor</th>
+                                <th>Parameter</th>
+                                <th>Rentang Ukur</th>
+                                <th>Gas<br/>Kalibrasi</th>
+                                <th colspan="2"><b>Penunjukan Alat</b><br/><i>Instrument's Reading</i></th>
+                                <th colspan="2"><i>Kerja Alarm</i></th>
+                                <th>Tipe Sensor</th>
                             </tr>
                             <tr>
-                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Parameter</i></th>
-                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Measuring Range</i></th>
-                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Calibration<br/>Gas</i></th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Sebelum Kal.<br/><i style="font-weight: normal;">Before Cal.</i></th>
-                                <th style="font-weight: bold; padding: 1px 5px; line-height: 1; vertical-align: middle;">Setelah Kal.<br/><i style="font-weight: normal;">After Cal.</i></th>
-                                <th style="padding: 1px 5px; line-height: 1; vertical-align: middle;">Titik Alarm<br/><i style="font-weight: normal;">Alarm Point</i></th>
-                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Alarm</i><br/><i>Work</i></th>
-                                <th style="font-weight: normal; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Type Sensor</i></th>
+                                <th style="font-weight: normal; !important"><i>Parameter</i></th>
+                                <th style="font-weight: normal; !important"><i>Measuring Range</i></th>
+                                <th style="font-weight: normal; !important"><i>Calibration<br/>Gas</i></th>
+                                <th style="font-weight: bold;">Sebelum Kal.<br/><i style="font-weight: normal; !important">Before Cal.</i></th>
+                                <th style="font-weight: bold;">Setelah Kal.<br/><i style="font-weight: normal; !important">After Cal.</i></th>
+                                <th>Titik Alarm<br/><i style="font-weight: normal; !important">Alarm Point</i></th>
+                                <th style="font-weight: normal; !important"><i>Alarm</i><br/><i>Work</i></th>
+                                <th style="font-weight: normal; !important"><i>Type Sensor</i></th>
                             </tr>
                         </thead>
                         <t t-set="total_rows" t-value="6"/>  <!-- Total baris yang ingin ditampilkan -->
@@ -235,14 +245,14 @@
                             <!-- Loop untuk data yang ada -->
                             <t t-foreach="data_rows" t-as="line">
                                 <tr>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.parameter"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.measuring_range"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.calibration_gas"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.before_cal"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.after_cal"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.alarm_point"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.alarm_work"/></td>
-                                    <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="line.type_sensor"/></td>
+                                    <td><t t-esc="line.parameter"/></td>
+                                    <td><t t-esc="line.measuring_range"/></td>
+                                    <td><t t-esc="line.calibration_gas"/></td>
+                                    <td><t t-esc="line.before_cal"/></td>
+                                    <td><t t-esc="line.after_cal"/></td>
+                                    <td><t t-esc="line.alarm_point"/></td>
+                                    <td><t t-esc="line.alarm_work"/></td>
+                                    <td><t t-esc="line.type_sensor"/></td>
                                 </tr>
                             </t>
 
@@ -300,8 +310,6 @@
                         <tr>
                             <td style="width: 60%;">
                                 <div style="margin-top: 20px;">
-<!--                                    <img t-att-src="base_url + '/pgs_certificate/static/image/qr-code.jpeg'"-->
-<!--                                            alt="Classic" style="margin: 0 auto; max-width: 130px"/>-->
                                     <img t-if="doc.barcode"
                                          t-att-src="image_data_uri(doc.barcode)"
                                          alt="Barcode"
@@ -309,32 +317,37 @@
                                 </div>
                             </td>
                             <td style="width: 40%; text-align: left; padding-top: 5px; padding-bottom: 5px;">
+                                <t t-set="signature" t-value="env['ir.config_parameter'].sudo().get_param('pgs_certificate.signature')"/>
+
                                 <table style="margin-top: 5px; margin-bottom: 5px; width: 100%; border-collapse: collapse;">
                                     <tr>
                                         <td style="width: 30%; vertical-align: top;">Inspected on</td>
                                         <td style="width: 5%; vertical-align: top;">:</td>
-                                        <td style="text-decoration: underline;"><t t-esc="doc.calibration_procedure"/></td>
+                                        <td style="border-bottom: 1px solid black;"><t t-esc="doc.calibration_procedure"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width: 30%; vertical-align: top;">Inspector</td>
                                         <td style="width: 5%; vertical-align: top;">:</td>
-                                        <td style="text-decoration: underline;"><t t-esc="doc.inspector"/></td>
+                                        <td style="vertical-align: top; border-bottom: 1px solid black;">
+                                            <div style="position: relative; min-height: 100px;">
+                                                <img t-if="doc.signature"
+                                                    t-att-src="image_data_uri(doc.signature)"
+                                                    alt="Signature"
+                                                    style="position: absolute; top: 0; left: 0; height: 100px; opacity: 0.5; z-index: 1;" />
+                                                    
+                                                <div style="
+                                                    position: relative;
+                                                    z-index: 2;
+                                                    border-bottom: 1px solid black;
+                                                    display: block;
+                                                    padding-bottom: 2px;
+                                                    width: 100%;">
+                                                    <t t-esc="doc.inspector"/>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </table>
-                                <t t-set="signature" t-value="env['ir.config_parameter'].sudo().get_param('pgs_certificate.signature')"/>
-                                <div>
-                                    <img t-if="doc.signature"
-                                         t-att-src="image_data_uri(doc.signature)"
-                                         alt="Signature"
-                                         style="margin: 0 auto;"/>
-                                </div>
-
-<!--                                <div>-->
-<!--                                    <img t-att-src="base_url + '/pgs_certificate/static/image/img.png'"-->
-<!--                                        alt="Classic" style="margin: 0 auto;"/>-->
-<!--                                </div>-->
-                                <!-- <p style="margin-top: 5px; margin-bottom: 5px;"/>
-                                <p>_________________________</p> -->
                             </td>
                         </tr>
                     </table>
@@ -344,8 +357,7 @@
                 </div>
             </t>
             <div class="footer">
-                <div class="certificate-header" style="width: 100%; display: flex; justify-content: center;">
-                    <table class="header-table" border="0" style="border-collapse: collapse; width: 100%; text-align: center;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
                     <tr>
                         <td style="width: 35%; vertical-align: middle; text-align: left;">
                             <div class="org-contact" style="font-family: Arial, sans-serif; font-size: 9.3px;">
@@ -357,15 +369,14 @@
                                 Email : sales@ptpgs.id  <br/>
                             </div>
                         </td>
-                        <td class="org-info" style="width: 65%; text-align: right; vertical-align: bottom; color: red;">
-                            <div class="org-contact" style="font-family: Arial, sans-serif; font-size: 10.6px; white-space:nowrap;">
+                        <td style="width: 65%; text-align: right; vertical-align: bottom; color: red;">
+                            <div style="font-family: Arial, sans-serif; font-size: 10.6px; white-space:nowrap;">
                                 This result of Calibration related only to the item(s) calibrated <br/>
                                 Certificate can not reproduced and published without approval from PT. Pratama Graha Semesta
                             </div>
                         </td>
                     </tr>
-                    </table>
-                </div>
+                </table>
             </div>
         </t>
     </template>

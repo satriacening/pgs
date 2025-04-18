@@ -13,6 +13,7 @@ class CertificateSearchController(http.Controller):
         cert_no = kwargs.get('certification_number')
         serial_no = kwargs.get('serial_number')
         instrument = kwargs.get('instrument_name')
+        wa_number = request.env['ir.config_parameter'].sudo().get_param('pgs_certificate.wa_number')
 
         domain = []
         if cert_no:
@@ -28,6 +29,7 @@ class CertificateSearchController(http.Controller):
             'certification_number': cert_no or '',
             'serial_number': serial_no or '',
             'instrument_name': instrument or '',
+            'wa_number': wa_number,
             'results': results
         })
 

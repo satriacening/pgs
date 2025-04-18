@@ -21,7 +21,7 @@ class PgsCertificate(models.Model):
     cylinder_gas = fields.Char('Cylinder Gas')
     traceable_through = fields.Char('Traceable to SI through')
     calibration_procedure = fields.Char('Calibration Procedure')
-    inspector = fields.Char('Inspector')
+    inspector = fields.Many2one('res.users','Inspector')
     inspected_date = fields.Date('Inspected Date')
 
     certification_line_ids = fields.One2many('pgs.certificate.line', 'certificate_id')
@@ -43,3 +43,11 @@ class PgsCertificate(models.Model):
             rec.signature_filename = filename
             rec.barcode = barcode
             rec.barcode_filename = barcode_filename
+
+    def download_certificate(self):
+        self.ensure_one()  # pastikan hanya 1 record
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/certificate/report/{self.id}',  # URL kamu
+            'target': 'new',  # buka di tab baru
+        }

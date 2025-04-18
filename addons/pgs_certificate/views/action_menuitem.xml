@@ -8,6 +8,7 @@
 
     <menuitem id="menu_pgs_certificate"
         action="action_pgs_certificate"
+        groups="base.group_no_one"
         name="Certificate List" parent="contacts.res_partner_menu_config"
         sequence="4"/>
 </odoo>

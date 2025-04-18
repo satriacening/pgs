@@ -15,6 +15,7 @@
                             <field name="serial_number"/>
                             <field name="detection_principle"/>
                             <field name="location"/>
+                            <button name="download_certificate" string="Download" type="object"/>
                         </tree>
                     </field>
                 </page>

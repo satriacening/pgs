@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_inherit_certificate" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.certificate</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Certificate">
+                    <form>
+                        <group>
+                            <group>
+                                <field name="signature_certificate" filename="signature_filename" widget="image" class="oe_avatar"/>
+                            </group>
+                        </group>
+                    </form>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

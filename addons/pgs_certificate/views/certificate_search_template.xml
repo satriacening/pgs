@@ -53,9 +53,13 @@
             </tbody>
           </table>
         </t>
-        <t t-if="not results and (certification_number or serial_number or instrument_name)">
-          <p class="alert alert-warning">Tidak ditemukan data sesuai pencarian.</p>
-        </t>
+          <t t-if="not results and (certification_number or serial_number or instrument_name)">
+            <p class="alert alert-warning">
+              Data tidak ditemukan, silahkan klik
+              <a t-if="wa_number" t-att-href="'https://wa.me/' + wa_number" target="_blank">Disini</a>
+              untuk informasi lebih lanjut.
+            </p>
+          </t>
       </div>
     </t>
   </template>

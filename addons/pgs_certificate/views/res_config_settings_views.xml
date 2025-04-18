@@ -5,11 +5,11 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//setting[@id='partner_autocomplete']" position="after">
-                <setting id="signature_setting" string="Signature">
-                    <field name="signature" filename="signature_filename" widget="image" class="oe_avatar"/>
-                </setting>
                 <setting id="barcode_setting" string="Barcode">
                     <field name="barcode" filename="barcode_filename" widget="image" class="oe_avatar"/>
+                </setting>
+                <setting id="wa_setting" string="WA Number">
+                    <field name="wa_number"/>
                 </setting>
             </xpath>
         </field>

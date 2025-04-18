@@ -25,11 +25,16 @@
                     }
                     .watermark {
                         position: fixed;
-                        opacity:0.2;
-                        width:100%;
-                        text-align:center;
-                        z-index:99;
-                        top: 35%
+                        opacity: 0.2;
+                        width: 100%;
+                        text-align: center;
+                        z-index: 99;
+                        top: 30%;
+                    }
+
+                    .watermark img {
+                        width: 500px; /* ubah ini untuk memperbesar gambar */
+                        max-width: 100%; /* supaya nggak overflow di layar kecil */
                     }
             </style>
 
@@ -37,7 +42,7 @@
                 <table style="width: 100%;  border-collapse: collapse; border: 0px solid transparent !important;">
                     <tr>
                         <td style="width: 20%; vertical-align: middle;">
-                            <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" class="logo-img" style="max-width: 100%; height: auto;"/>
+                            <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" class="logo-img" style="max-width: 80%; height: auto;"/>
                         </td>
                         <td style="width: 80%; text-align: left; vertical-align: middle;">
                             <div style="font-family: 'Times New Roman', serif; font-size: 27px; font-weight: bold; color: red; margin-bottom: 4px; white-space:nowrap;">
@@ -148,15 +153,15 @@
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Pembuatan</strong></td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
                             <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.create_date"/></td>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Kapal</strong> </td>
+                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Lokasi</strong> </td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_vessel"/></td>
+                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_location"/></td>
                         </tr>
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Created Date</i></td>
                             <td/>
                             <td/>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Vessel</i></td>
+                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
                             <td/>
                             <td/>
                         </tr>
@@ -329,7 +334,7 @@
                                 </div>
                             </td>
                             <td style="width: 40%; text-align: left; padding-top: 5px; padding-bottom: 5px;">
-                                <t t-set="signature" t-value="env['ir.config_parameter'].sudo().get_param('pgs_certificate.signature')"/>
+<!--                                <t t-set="signature" t-value="env['ir.config_parameter'].sudo().get_param('pgs_certificate.signature')"/>-->
 
                                 <table style="margin-top: 5px; margin-bottom: 5px; width: 100%; border-collapse: collapse;">
                                     <tr>
@@ -342,8 +347,8 @@
                                         <td style="width: 5%; vertical-align: top;">:</td>
                                         <td style="vertical-align: top; border-bottom: 1px solid black;">
                                             <div style="position: relative; min-height: 100px;">
-                                                <img t-if="doc.signature"
-                                                    t-att-src="image_data_uri(doc.signature)"
+                                                <img t-if="doc.inspector.signature_certificate"
+                                                    t-att-src="image_data_uri(doc.inspector.signature_certificate)"
                                                     alt="Signature"
                                                     style="position: absolute; top: 0; left: 0; height: 100px; opacity: 0.5; z-index: 1;" />
                                                     
@@ -354,7 +359,7 @@
                                                     display: block;
                                                     padding-bottom: 2px;
                                                     width: 100%;">
-                                                    <t t-esc="doc.inspector"/>
+                                                    <t t-esc="doc.inspector.name"/>
                                                 </div>
                                             </div>
                                         </td>

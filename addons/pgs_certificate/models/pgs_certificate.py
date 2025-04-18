@@ -16,7 +16,7 @@ class PgsCertificate(models.Model):
     certification_number = fields.Char('Certificate Number')
     owner_name = fields.Many2one('res.partner', 'Name')
     # owner_name = fields.Char('Name')
-    owner_vessel = fields.Char('Vessel')
+    owner_location = fields.Char('Owner Location')
     page = fields.Integer('Page')
     cylinder_gas = fields.Char('Cylinder Gas')
     traceable_through = fields.Char('Traceable to SI through')

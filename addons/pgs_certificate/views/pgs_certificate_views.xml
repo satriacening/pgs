@@ -15,7 +15,7 @@
                 <field name="next_calibration_date"/>
                 <field name="certification_number"/>
                 <field name="owner_name"/>
-                <field name="owner_vessel"/>
+                <field name="owner_location"/>
                 <field name="page"/>
             </tree>
         </field>
@@ -66,7 +66,7 @@
                         <group>
                             <field name="certification_number"/>
                             <field name="owner_name"/>
-                            <field name="owner_vessel"/>
+                            <field name="owner_location"/>
                             <field name="page"/>
                             <field name="cylinder_gas"/>
                             <field name="traceable_through"/>

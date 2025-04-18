@@ -23,10 +23,18 @@
                         line-height: 1; 
                         vertical-align: middle;
                     }
+                    .watermark {
+                        position: fixed;
+                        opacity:0.2;
+                        width:100%;
+                        text-align:center;
+                        z-index:99;
+                        top: 35%
+                    }
             </style>
 
             <div class="header">
-                <table style="width: 100%;  border-collapse: collapse; text-align: center;">
+                <table style="width: 100%;  border-collapse: collapse; border: 0px solid transparent !important;">
                     <tr>
                         <td style="width: 20%; vertical-align: middle;">
                             <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" class="logo-img" style="max-width: 100%; height: auto;"/>
@@ -44,6 +52,10 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+
+            <div class="watermark">
+                <img t-att-src="base_url + '/pgs_certificate/static/image/pgs-logo.jpg'" alt="Logo"/>
             </div>
             <t t-foreach="docs" t-as="doc">
                 <div class="page" style="font-family: 'Times New Roman', Times, serif; font-size: 12px; line-height: 1.5; margin: 5px 10px; ">
@@ -357,7 +369,7 @@
                 </div>
             </t>
             <div class="footer">
-                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                <table style="width: 100%; border-collapse: collapse; border: 0px solid transparent !important;">
                     <tr>
                         <td style="width: 35%; vertical-align: middle; text-align: left;">
                             <div class="org-contact" style="font-family: Arial, sans-serif; font-size: 9.3px;">

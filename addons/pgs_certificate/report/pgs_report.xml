@@ -158,7 +158,7 @@
                             <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_location"/></td>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Created Date</i></td>
+                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Manufacture Date</i></td>
                             <td/>
                             <td/>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
@@ -340,7 +340,7 @@
                                     <tr>
                                         <td style="width: 30%; vertical-align: top;">Inspected on</td>
                                         <td style="width: 5%; vertical-align: top;">:</td>
-                                        <td style="border-bottom: 1px solid black;"><t t-esc="doc.calibration_procedure"/></td>
+                                        <td style="border-bottom: 1px solid black;"><t t-esc="doc.inspected_date"/></td>
                                     </tr>
                                     <tr>
                                         <td style="width: 30%; vertical-align: top;">Inspector</td>

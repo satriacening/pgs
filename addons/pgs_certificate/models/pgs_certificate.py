@@ -23,6 +23,7 @@ class PgsCertificate(models.Model):
     calibration_procedure = fields.Char('Calibration Procedure')
     inspector = fields.Many2one('res.users','Inspector')
     inspected_date = fields.Date('Inspected Date')
+    replaced_part = fields.Char('Replaced Part')
 
     certification_line_ids = fields.One2many('pgs.certificate.line', 'certificate_id')
 

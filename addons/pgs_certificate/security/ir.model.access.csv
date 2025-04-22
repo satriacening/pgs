@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_pgs_certificate,pgs.certificate,model_pgs_certificate,,1,1,1,1
-access_pgs_certificate_line,pgs.certificate.line,model_pgs_certificate_line,,1,1,1,1
+access_pgs_certificate,pgs.certificate,model_pgs_certificate,pgs_certificate.group_admin_certificate,1,1,1,1
+access_pgs_certificate_line,pgs.certificate.line,model_pgs_certificate_line,pgs_certificate.group_admin_certificate,1,1,1,1
+access_user_pgs_certificate,user.pgs.certificate,model_pgs_certificate,base.group_user,1,0,0,0
+access_user_pgs_certificate_line,user.pgs.certificate.line,model_pgs_certificate_line,base.group_user,1,0,0,0

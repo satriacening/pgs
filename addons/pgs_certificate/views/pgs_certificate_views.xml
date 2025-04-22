@@ -15,7 +15,6 @@
                 <field name="next_calibration_date"/>
                 <field name="certification_number"/>
                 <field name="owner_name"/>
-                <field name="owner_location"/>
                 <field name="page"/>
             </tree>
         </field>
@@ -58,21 +57,20 @@
                             <field name="manufacturer"/>
                             <field name="type"/>
                             <field name="serial_number"/>
-                            <field name="detection_principle"/>
                             <field name="location"/>
+                            <field name="detection_principle"/>
                             <field name="calibration_date"/>
                             <field name="next_calibration_date"/>
                         </group>
                         <group>
                             <field name="certification_number"/>
                             <field name="owner_name"/>
-                            <field name="owner_location"/>
                             <field name="page"/>
                             <field name="cylinder_gas"/>
-                            <field name="traceable_through"/>
                             <field name="calibration_procedure"/>
                             <field name="inspector"/>
                             <field name="inspected_date"/>
+                            <field name="replaced_part"/>
                         </group>
                     </group>
                     <notebook>

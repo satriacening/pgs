@@ -36,6 +36,16 @@
                         width: 500px; /* ubah ini untuk memperbesar gambar */
                         max-width: 100%; /* supaya nggak overflow di layar kecil */
                     }
+
+                    .no-border td {
+                        border-left: 1px solid transparent !important;
+                        border-right: 1px solid transparent !important;
+                        border-bottom: 1px solid transparent !important;
+                    }
+
+                    .text-align-left td {
+                        text-align: left;
+                    }
             </style>
 
             <div class="header">
@@ -153,15 +163,15 @@
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Pembuatan</strong></td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
                             <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.create_date"/></td>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Lokasi</strong> </td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_location"/></td>
+                            <td/>
+                            <td/>
+                            <td/>
                         </tr>
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Manufacture Date</i></td>
                             <td/>
                             <td/>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
+                            <td/>
                             <td/>
                             <td/>
                         </tr>
@@ -287,12 +297,21 @@
                                         <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
                                     </tr>
                                 </t>
+                                    <tr class="no-border text-align-left">
+                                        <td><strong>Replaced Part</strong></td>
+                                        <td colspan="7">: <t t-esc="doc.replaced_part"/></td>
+                                    </tr>
                             </t>
                         </tbody>
                     </table>
                     <br/>
                     <!-- Footer -->
                     <table width="100%" border="0" style="border-collapse: collapse; text-align: left; font-size: 12px !important">
+                        <tr>
+                            <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"></td>
+                            <td style="width: 30px; vertical-align: top;">:</td>
+                            <td><t t-esc="doc.replaced_part"/></td>
+                        </tr>
                         <tr>
                             <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"><strong>Keterangan</strong> / <i>Note</i></td>
                             <td style="width: 30px; vertical-align: top;">:</td>
@@ -311,11 +330,6 @@
                             <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Gas Silinder</strong> / <i>Cylinder Gas</i></td>
                             <td style="width: 30px; vertical-align: top; padding-top: 1px; padding-bottom: 1px;">:</td>
                             <td style="padding-top: 1px; padding-bottom: 1px;"><t t-esc="doc.cylinder_gas"/></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Tertelusur ke SI melalui</strong> / <i>Traceable to SI through</i></td>
-                            <td style="width: 30px; vertical-align: top; padding-top: 1px; padding-bottom: 1px;">:</td>
-                            <td style="padding-top: 1px; padding-bottom: 1px;"><t t-esc="doc.traceable_through"/></td>
                         </tr>
                         <tr>
                             <td style="width: 380px; text-align: left; vertical-align: top; padding-top: 1px; padding-bottom: 1px;"><strong>Prosedur Kalibrasi</strong> / <i>Calibration Procedure</i></td>

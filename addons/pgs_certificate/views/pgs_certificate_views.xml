@@ -55,6 +55,7 @@
                         <group>
                             <field name="instrument_name"/>
                             <field name="manufacturer"/>
+                            <field name="manufacture_date"/>
                             <field name="type"/>
                             <field name="serial_number"/>
                             <field name="location"/>

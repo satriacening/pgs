@@ -297,16 +297,21 @@
                                         <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"/>
                                     </tr>
                                 </t>
-                                    <tr class="no-border text-align-left">
-                                        <td><strong>Replaced Part</strong>  : <t t-esc="doc.replaced_part"/></td>
-<!--                                        <td colspan="7">: <t t-esc="doc.replaced_part"/></td>-->
-                                    </tr>
+<!--                                    <tr class="no-border text-align-left">-->
+<!--                                        <td><strong>Replaced Part</strong>  : <t t-esc="doc.replaced_part"/></td>-->
+<!--&lt;!&ndash;                                        <td colspan="7">: <t t-esc="doc.replaced_part"/></td>&ndash;&gt;-->
+<!--                                    </tr>-->
                             </t>
                         </tbody>
                     </table>
                     <br/>
                     <!-- Footer -->
                     <table width="100%" border="0" style="border-collapse: collapse; text-align: left; font-size: 12px !important">
+                        <tr class="no-border text-align-left">
+                            <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"><strong>Replaced Part</strong></td>
+                            <td style="width: 30px; vertical-align: top;">:</td>
+                            <td><t t-esc="doc.replaced_part"/></td>
+                        </tr>
                         <tr>
                             <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"><strong>Keterangan</strong> / <i>Note</i></td>
                             <td style="width: 30px; vertical-align: top;">:</td>

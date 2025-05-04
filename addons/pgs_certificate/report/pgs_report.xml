@@ -194,7 +194,9 @@
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Lokasi</strong></td>
                             <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.location"/></td>
+                            <td rowspan="3" style="max-width: 200px; word-wrap: break-word; white-space: normal; padding: 1px 5px; line-height: 1; vertical-align: top;">
+                                <t t-esc="doc.location"/>
+                            </td>
                             <td/>
                             <td/>
                             <td/>
@@ -202,7 +204,15 @@
                         <tr>
                             <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
                             <td/>
+<!--                            <td/>-->
                             <td/>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td/>
+<!--                            <td/>-->
                             <td/>
                             <td/>
                             <td/>
@@ -364,7 +374,7 @@
                                                 <img t-if="doc.inspector.signature_certificate"
                                                     t-att-src="image_data_uri(doc.inspector.signature_certificate)"
                                                     alt="Signature"
-                                                    style="position: absolute; top: 0; left: 0; height: 130px; z-index: 1;" />
+                                                    style="position: absolute; top: 0; left: 0; height: 160px; z-index: 1;" />
                                                 <div style="
                                                     position: relative;
                                                     z-index: 2;

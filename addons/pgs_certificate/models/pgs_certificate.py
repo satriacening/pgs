@@ -10,7 +10,7 @@ class PgsCertificate(models.Model):
     type = fields.Char('Type')
     serial_number = fields.Char('Serial Number')
     detection_principle = fields.Char('Detection Principle')
-    location = fields.Char('Location')
+    location = fields.Text('Location')
     calibration_date = fields.Date('Calibration Date')
     next_calibration_date = fields.Date('Next Calibration')
     certification_number = fields.Char('Certificate Number')

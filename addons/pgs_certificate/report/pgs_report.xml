@@ -359,20 +359,19 @@
                                     <tr>
                                         <td style="width: 30%; vertical-align: top;">Inspector</td>
                                         <td style="width: 5%; vertical-align: top;">:</td>
-                                        <td style="vertical-align: top; border-bottom: 1px solid black;">
+                                        <td style="vertical-align: top; position: relative; overflow: visible; z-index:-1; border-bottom: 1px solid black;">
                                             <div style="position: relative; height: 100px;">
                                                 <img t-if="doc.inspector.signature_certificate"
                                                     t-att-src="image_data_uri(doc.inspector.signature_certificate)"
                                                     alt="Signature"
-                                                    style="position: absolute; top: 0; left: 0; height: 100%; z-index: 1;" />
-                                                    
+                                                    style="position: absolute; top: 0; left: 0; height: 130px; z-index: 1;" />
                                                 <div style="
                                                     position: relative;
                                                     z-index: 2;
-                                                    border-bottom: 1px solid black;
                                                     display: block;
                                                     padding-bottom: 2px;
-                                                    width: 100%;">
+                                                    width: 100%;
+                                                    border-bottom: 1px solid black;">
                                                     <t t-esc="doc.inspector.name"/>
                                                 </div>
                                             </div>

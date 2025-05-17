@@ -163,62 +163,64 @@ class CommissionReport(models.TransientModel):
                     lambda l: l.user_id == team_user)
             })
         for team_user, team_sale_orders in team_sale_orders_dict.items():
-            commissions_id = team_user.commission_id if team_user.commission_id \
-                else team_user.sale_team_id.commission_id
-            if commissions_id:
-                filtered_order_lines = team_sale_orders.filtered(
-                    lambda l: self.date_from <= l.date_order.date(
-                    ) <= self.date_to and l.date_order.date() >= commissions_id.date_from
-                ).mapped('order_line')
-                filtered_order_lines_commission_total = sum(
-                    filtered_order_lines.mapped('price_subtotal'))
-                if commissions_id.type == 'product':
-                    commission_products = commissions_id.product_comm_ids.product_id
-                    prod_commission = filtered_order_lines.filtered(
-                        lambda l: l.product_id in commission_products)
-                    for rules in commissions_id.product_comm_ids.filtered(
-                            lambda l: l.product_id in prod_commission.mapped(
-                                'product_id')):
-                        product_order_line = prod_commission.filtered(
-                            lambda l: l.product_id == rules.product_id)
-                        total_price = sum(
-                            product_order_line.mapped('price_subtotal'))
-                        product_commission = (total_price * rules.percentage) / 100
-                        commission_total.append(total_price)
-                        commission_name.append(commissions_id.name)
-                        commission_salesperson.append(team_user.name)
-                        commission_sales_team.append(
-                            team_user.sale_team_id.name)
-                        commission.append(rules.amount) if (
-                                product_commission > rules.amount) \
-                            else commission.append(product_commission)
-
-                if commissions_id.type == 'revenue' and (
-                        commissions_id.revenue_type == 'graduated'):
-                    for rules in commissions_id.revenue_grd_comm_ids:
-                        if rules.amount_from <= filtered_order_lines_commission_total \
-                                < rules.amount_to:
-                            graduated_commission = (filtered_order_lines_commission_total
-                                                               * rules.graduated_commission_rate) / 100
-                            commission.append(graduated_commission)
+            # commissions_id = team_user.commission_id if team_user.commission_id \
+            #     else team_user.sale_team_id.commission_id
+            commissions_ids = team_user.commission_id | team_user.sale_team_id.commission_id
+            for commissions_id in commissions_ids:
+                if commissions_id:
+                    filtered_order_lines = team_sale_orders.filtered(
+                        lambda l: self.date_from <= l.date_order.date(
+                        ) <= self.date_to and l.date_order.date() >= commissions_id.date_from
+                    ).mapped('order_line')
+                    filtered_order_lines_commission_total = sum(
+                        filtered_order_lines.mapped('price_subtotal'))
+                    if commissions_id.type == 'product':
+                        commission_products = commissions_id.product_comm_ids.product_id
+                        prod_commission = filtered_order_lines.filtered(
+                            lambda l: l.product_id in commission_products)
+                        for rules in commissions_id.product_comm_ids.filtered(
+                                lambda l: l.product_id in prod_commission.mapped(
+                                    'product_id')):
+                            product_order_line = prod_commission.filtered(
+                                lambda l: l.product_id == rules.product_id)
+                            total_price = sum(
+                                product_order_line.mapped('price_subtotal'))
+                            product_commission = (total_price * rules.percentage) / 100
+                            commission_total.append(total_price)
                             commission_name.append(commissions_id.name)
                             commission_salesperson.append(team_user.name)
                             commission_sales_team.append(
                                 team_user.sale_team_id.name)
-                            commission_total.append(
-                                filtered_order_lines_commission_total)
+                            commission.append(rules.amount) if (
+                                    product_commission > rules.amount) \
+                                else commission.append(product_commission)
 
-                if commissions_id.type == 'revenue' and (
-                        commissions_id.revenue_type == 'straight'):
-                    straight_commission = (filtered_order_lines_commission_total
-                                           * commissions_id.straight_commission_rate) / 100
-                    commission.append(straight_commission)
-                    commission_name.append(commissions_id.name)
-                    commission_salesperson.append(team_user.name)
-                    commission_sales_team.append(team_user.sale_team_id.name)
-                    commission_total.append(
-                        filtered_order_lines_commission_total)
-        # sales team's condition ends here #
+                    if commissions_id.type == 'revenue' and (
+                            commissions_id.revenue_type == 'graduated'):
+                        for rules in commissions_id.revenue_grd_comm_ids:
+                            if rules.amount_from <= filtered_order_lines_commission_total \
+                                    < rules.amount_to:
+                                graduated_commission = (filtered_order_lines_commission_total
+                                                                   * rules.graduated_commission_rate) / 100
+                                commission.append(graduated_commission)
+                                commission_name.append(commissions_id.name)
+                                commission_salesperson.append(team_user.name)
+                                commission_sales_team.append(
+                                    team_user.sale_team_id.name)
+                                commission_total.append(
+                                    filtered_order_lines_commission_total)
+
+                    if commissions_id.type == 'revenue' and (
+                            commissions_id.revenue_type == 'straight'):
+                        straight_commission = (filtered_order_lines_commission_total
+                                               * commissions_id.straight_commission_rate) / 100
+                        commission.append(straight_commission)
+                        commission_name.append(commissions_id.name)
+                        commission_salesperson.append(team_user.name)
+                        commission_sales_team.append(team_user.sale_team_id.name)
+                        commission_total.append(
+                            filtered_order_lines_commission_total)
+            # sales team's condition ends here #
 
         data = {
             'model_id': self.id,

@@ -145,7 +145,17 @@ export class CRMDashboard extends Component {
             .then(function(res) {
                 self.top_sp_by_invoice = res['sales_person_invoice'];
             });
-        return $.when(def0, def1, def2, def3, def4, def5, def6, def8, def9, def10, def11, def12, def13);
+        var def14 = jsonrpc('/web/dataset/call_kw/crm.lead/get_commission', {
+                model: "crm.lead",
+                method: "get_commission",
+                args: [{}],
+                kwargs: {},
+            })
+            .then(function(res) {
+                self.commission_report = res['commission'];
+            });
+
+        return $.when(def0, def1, def2, def3, def4, def5, def6, def8, def9, def10, def11, def12, def13, def14);
     }
     /**
      * Handles the change event for income and expense values.

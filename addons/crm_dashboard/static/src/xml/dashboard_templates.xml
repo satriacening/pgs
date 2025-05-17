@@ -637,6 +637,36 @@
                     </div>
                 </t>
             </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="chart-container card-shadow">
+                        <h3 class="h5">Commission Report</h3>
+                        <hr/>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>SO</th>
+                                    <th>Total</th>
+                                    <th>Commission</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="commission_report" t-as="line" t-key="line.order_number">
+                                    <tr>
+                                        <td><t t-esc="line.sales_person"/></td>
+                                        <td><t t-esc="line.order_number"/></td>
+                                        <td><t t-esc="line.amount"/></td>
+                                        <td><t t-esc="line.commission"/></td>
+                                        <td><t t-esc="line.date"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </section>
     </t>
 </templates>

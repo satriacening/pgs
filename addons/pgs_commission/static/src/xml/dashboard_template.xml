@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="admincrm_inherit_commission_report" inherit_id="crm_dashboard.Admincrm">
+        <!-- Ganti `module_name` dengan nama modul tempat template `Admincrm` didefinisikan -->
+
+        <!-- Tambahkan setelah elemen row terakhir -->
+        <xpath expr="//section[@id='main_section_admin']" position="inside">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="chart-container card-shadow">
+                        <h3 class="h5">Commission Report</h3>
+                        <hr/>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>SO</th>
+                                    <th>Total</th>
+                                    <th>Commission</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="commission_report" t-as="line" t-key="line">
+                                    <tr>
+                                        <td><t t-esc="line[0]"/></td>
+                                        <td><t t-esc="line[1]"/></td>
+                                        <td><t t-esc="line[2]"/></td>
+                                        <td><t t-esc="line[3]"/></td>
+                                        <td><t t-esc="line[4]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

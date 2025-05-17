@@ -341,6 +341,34 @@ class CRMLead(models.Model):
         return {'country_count': country_count}
 
     @api.model
+    def get_commission(self, kwargs):
+        """Top 10 Country Wise Count - Heat Map"""
+        mock = [
+            {
+                'sales_person': 'John Doe',
+                'order_number': 'SO001',
+                'amount': 1000,
+                'commission': 100,
+                'date': '2025-05-01'
+            },
+            {
+                'sales_person': 'Jane Smith',
+                'order_number': 'SO002',
+                'amount': 2000,
+                'commission': 200,
+                'date': '2025-05-03'
+            },
+            {
+                'sales_person': 'Alice Brown',
+                'order_number': 'SO003',
+                'amount': 1500,
+                'commission': 150,
+                'date': '2025-05-10'
+            },
+        ]
+        return {'commission': mock}
+
+    @api.model
     def get_total_lost_crm(self, option):
         """Lost Opportunity or Lead Graph"""
         month_dict = {}

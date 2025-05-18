@@ -308,7 +308,7 @@ class CommissionReport(models.TransientModel):
 
     def get_xlsx_report(self, data, response):
         """get_xlsx_report function"""
-        type = data['type']
+        sales_type = data['type']
         date = data['date']
         team = data['sales_team_ids']
         user = data['salesperson_ids']
@@ -348,7 +348,7 @@ class CommissionReport(models.TransientModel):
         row = 5
         col = 0
         index = 1
-        if user and type == 'person':
+        if user and sales_type == 'person':
             sheet.merge_range('A1:E1', 'COMMISSION PLAN REPORT', head)
             sheet.write('D2', 'Date From: ' + data['date_from'], date_format)
             sheet.write('E2', 'Date To: ' + data['date_to'], date_format)
@@ -401,7 +401,7 @@ class CommissionReport(models.TransientModel):
             sheet.write(row + 1, col + 4, round(sum(commission_list), 2),
                         format2)
 
-        elif team and type == 'team':
+        elif team and sales_type == 'team':
             sheet.merge_range('A1:F1', 'COMMISSION PLAN REPORT', head)
             sheet.write('E2', 'Date From: ' + data['date_from'], date_format)
             sheet.write('F2', 'Date To: ' + data['date_to'], date_format)

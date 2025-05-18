@@ -36,6 +36,166 @@ class CRMLead(models.Model):
     achievement_amount = fields.Float(string="Monthly Achievement",
                                       help="Achievement for the month")
 
+
+    @api.model
+    def get_commission_team(self, kwargs):
+        team_wizard_persons = self.env['crm.team'].sudo().search([])
+        team_sale_orders = self.env['sale.order'].search(
+            [('user_id', 'in', team_wizard_persons.ids)])
+        team_sale_orders_dict = {}
+        commission_total = []
+        commission = []
+        commission_name = []
+        commission_salesperson = []
+        commission_sales_team = []
+        team_order_names = []
+        team_po_names = []
+        team_obj = team_sale_orders.mapped('user_id').sorted(key=lambda d: d.id)
+        for team_user in team_obj:
+            team_sale_orders_dict.update({
+                team_user: team_sale_orders.filtered(
+                    lambda l: l.user_id == team_user)
+            })
+        for team_user, team_sale_orders in team_sale_orders_dict.items():
+            commissions_ids = team_user.commission_id | team_user.sale_team_id.commission_id
+            po_names_list = list(filter(None, team_sale_orders.mapped('po_number')))
+            team_po_names.append(', '.join(po_names_list) if po_names_list else '-')
+            so_names_list = list(filter(None, team_sale_orders.mapped('name')))
+            team_order_names.append(', '.join(so_names_list) if so_names_list else '-')
+            for commissions_id in commissions_ids:
+                if not commissions_id:
+                    continue
+                filtered_order_lines = team_sale_orders.mapped('order_line')
+                filtered_order_lines_commission_total = sum(filtered_order_lines.mapped('price_subtotal'))
+
+                if commissions_id.type == 'product':
+                    commission_products = commissions_id.product_comm_ids.product_id
+                    prod_commission = filtered_order_lines.filtered(
+                        lambda l: l.product_id in commission_products)
+                    for rules in commissions_id.product_comm_ids.filtered(
+                            lambda l: l.product_id in prod_commission.mapped('product_id')):
+                        product_order_line = prod_commission.filtered(
+                            lambda l: l.product_id == rules.product_id)
+                        total_price = sum(product_order_line.mapped('price_subtotal'))
+                        product_commission = (total_price * rules.percentage) / 100
+                        commission_total.append(total_price)
+                        commission_name.append(commissions_id.name)
+                        commission_salesperson.append(team_user.name)
+                        commission_sales_team.append(team_user.sale_team_id.name)
+                        commission.append(
+                            rules.amount if product_commission > rules.amount else product_commission)
+
+                elif commissions_id.type == 'revenue' and commissions_id.revenue_type == 'graduated':
+                    for rules in commissions_id.revenue_grd_comm_ids:
+                        if rules.amount_from <= filtered_order_lines_commission_total < rules.amount_to:
+                            graduated_commission = (filtered_order_lines_commission_total *
+                                                    rules.graduated_commission_rate) / 100
+                            commission.append(graduated_commission)
+                            commission_name.append(commissions_id.name)
+                            commission_salesperson.append(team_user.name)
+                            commission_sales_team.append(team_user.sale_team_id.name)
+                            commission_total.append(filtered_order_lines_commission_total)
+
+                elif commissions_id.type == 'revenue' and commissions_id.revenue_type == 'straight':
+                    straight_commission = (filtered_order_lines_commission_total *
+                                           commissions_id.straight_commission_rate) / 100
+                    commission.append(straight_commission)
+                    commission_name.append(commissions_id.name)
+                    commission_salesperson.append(team_user.name)
+                    commission_sales_team.append(team_user.sale_team_id.name)
+                    commission_total.append(filtered_order_lines_commission_total)
+        commission_report = []
+        for i in range(len(commission)):
+            commission_report.append({
+                'sales_person': commission_salesperson[i],
+                'sales_team': commission_sales_team[i],
+                'commission_plan': commission_name[i],
+                'total_revenue': commission_total[i],
+                'commission_amount': commission[i],
+                'order_number': team_order_names[i] if i < len(team_order_names) else '-',
+                'po_number': team_po_names[i] if i < len(team_po_names) else '-',
+            })
+        return {'commission': commission_report}
+
+    @api.model
+    def get_commission_person(self, kwargs):
+        sales_person_ids = self.env['res.users'].sudo().search([
+            ('commission_id', '!=', False)
+        ])
+        user_sale_orders = self.env['sale.order'].search([
+            ('user_id', 'in', sales_person_ids.ids)])
+        user_sale_orders_dict = {}
+        total_list = []
+        commission_list = []
+        user_commission_name = []
+        user_commission_salesperson = []
+        order_names = []
+        po_names = []
+        user_obj = user_sale_orders.mapped('user_id').sorted(key=lambda d: d.id)
+        for user in user_obj:
+            user_sale_orders_dict.update({
+                user: user_sale_orders.filtered(lambda l: l.user_id == user)
+            })
+        for user, user_sale_orders in user_sale_orders_dict.items():
+            commission_ids = user.commission_id
+            if not commission_ids:
+                continue
+            po_list = list(filter(None, user_sale_orders.mapped('po_number')))
+            po_names.append(', '.join(po_list) if po_list else '-')
+            so_list = list(filter(None, user_sale_orders.mapped('name')))
+            order_names.append(', '.join(so_list) if so_list else '-')
+            for commission_id in commission_ids:
+                if not commission_id:
+                    continue
+                filtered_order_lines = user_sale_orders.filtered(
+                    lambda l: l.date_order.date() >= commission_id.date_from
+                ).mapped('order_line')
+                filtered_order_lines_commission_total = sum(
+                    filtered_order_lines.mapped('price_subtotal'))
+                if commission_id.type == 'product':
+                    commission_products = commission_id.product_comm_ids.product_id
+                    prod_commission = filtered_order_lines.filtered(
+                        lambda l: l.product_id in commission_products)
+                    for rule in commission_id.product_comm_ids.filtered(
+                            lambda l: l.product_id in prod_commission.mapped('product_id')):
+                        product_order_line = prod_commission.filtered(
+                            lambda l: l.product_id == rule.product_id)
+                        total_price = sum(product_order_line.mapped('price_subtotal'))
+                        product_commission = (total_price * rule.percentage) / 100
+                        total_list.append(total_price)
+                        user_commission_name.append(commission_id.name)
+                        user_commission_salesperson.append(user.name)
+                        commission_list.append(
+                            rule.amount if product_commission > rule.amount else product_commission)
+                elif commission_id.type == 'revenue' and commission_id.revenue_type == 'graduated':
+                    for rule in commission_id.revenue_grd_comm_ids:
+                        if rule.amount_from <= filtered_order_lines_commission_total < rule.amount_to:
+                            graduated_commission = (filtered_order_lines_commission_total *
+                                                    rule.graduated_commission_rate) / 100
+                            commission_list.append(graduated_commission)
+                            user_commission_name.append(commission_id.name)
+                            user_commission_salesperson.append(user.name)
+                            total_list.append(filtered_order_lines_commission_total)
+                elif commission_id.type == 'revenue' and commission_id.revenue_type == 'straight':
+                    straight_commission = (filtered_order_lines_commission_total *
+                                           commission_id.straight_commission_rate) / 100
+                    commission_list.append(straight_commission)
+                    user_commission_name.append(commission_id.name)
+                    user_commission_salesperson.append(user.name)
+                    total_list.append(filtered_order_lines_commission_total)
+        commission_report = []
+        for i in range(len(commission_list)):
+            commission_report.append({
+                'sales_person': user_commission_salesperson[i],
+                'commission_plan': user_commission_name[i],
+                'total_revenue': total_list[i],
+                'commission_amount': commission_list[i],
+                'order_number': order_names[i] if i < len(order_names) else '-',
+                'po_number': po_names[i] if i < len(po_names) else '-',
+            })
+        return {'commission': commission_report}
+
+
     @api.model
     def _get_currency(self):
         """Get the currency symbol and position for the current user's company.
@@ -339,34 +499,6 @@ class CRMLead(models.Model):
         country_count = [[self.env['res.country'].browse(rec[0]).name, rec[1]]
                          for rec in data1]
         return {'country_count': country_count}
-
-    @api.model
-    def get_commission(self, kwargs):
-        """Top 10 Country Wise Count - Heat Map"""
-        mock = [
-            {
-                'sales_person': 'John Doe',
-                'order_number': 'SO001',
-                'amount': 1000,
-                'commission': 100,
-                'date': '2025-05-01'
-            },
-            {
-                'sales_person': 'Jane Smith',
-                'order_number': 'SO002',
-                'amount': 2000,
-                'commission': 200,
-                'date': '2025-05-03'
-            },
-            {
-                'sales_person': 'Alice Brown',
-                'order_number': 'SO003',
-                'amount': 1500,
-                'commission': 150,
-                'date': '2025-05-10'
-            },
-        ]
-        return {'commission': mock}
 
     @api.model
     def get_total_lost_crm(self, option):

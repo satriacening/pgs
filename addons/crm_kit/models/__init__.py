@@ -24,4 +24,5 @@ from . import commision_product
 from . import crm_commision
 from . import crm_team
 from . import res_users
+from . import sale_order
 

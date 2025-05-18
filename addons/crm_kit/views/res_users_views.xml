@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="base.view_users_simple_form"/>
         <field name="arch" type="xml">
             <field name="mobile" position="after">
-                <field name="commission_id"/>
+                <field name="commission_id" widget="many2many_tags"/>
             </field>
         </field>
     </record>

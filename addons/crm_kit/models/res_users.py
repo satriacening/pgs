@@ -28,6 +28,6 @@ class ResUsers(models.Model):
     """
     _inherit = 'res.users'
 
-    commission_id = fields.Many2one('crm.commission',
+    commission_id = fields.Many2many('crm.commission',
                                     string='Commission Plan',
                                     help='Commission plan')

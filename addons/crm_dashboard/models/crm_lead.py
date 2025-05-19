@@ -41,7 +41,7 @@ class CRMLead(models.Model):
     def get_commission_team(self, kwargs):
         team_wizard_persons = self.env['crm.team'].sudo().search([])
         team_sale_orders = self.env['sale.order'].search(
-            [('user_id', 'in', team_wizard_persons.ids)])
+            [('user_id', 'in', team_wizard_persons.member_ids.ids)])
         team_sale_orders_dict = {}
         commission_total = []
         commission = []

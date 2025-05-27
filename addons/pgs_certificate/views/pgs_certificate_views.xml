@@ -72,6 +72,8 @@
                             <field name="inspector"/>
                             <field name="inspected_date"/>
                             <field name="replaced_part"/>
+                            <field name="keterangan"/>
+                            <field name="note"/>
                         </group>
                     </group>
                     <notebook>

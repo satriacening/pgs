@@ -25,6 +25,8 @@ class PgsCertificate(models.Model):
     inspected_date = fields.Date('Inspected Date')
     manufacture_date = fields.Char('Manufacture Date')
     replaced_part = fields.Char('Replaced Part')
+    keterangan = fields.Text('Keterangan (indonesia)', help='Keterangan dalam bahasa indonesia')
+    note = fields.Text('note (english)', help='Note in english')
 
     certification_line_ids = fields.One2many('pgs.certificate.line', 'certificate_id')
 

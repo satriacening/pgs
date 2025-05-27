@@ -326,13 +326,17 @@
                             <td style="width: 180px; text-align: left; vertical-align: top; padding-right: 10px;"><strong>Keterangan</strong> / <i>Note</i></td>
                             <td style="width: 30px; vertical-align: top;">:</td>
                             <td>
-                                <strong>Hasil kalibrasi hanya berlaku untuk instrument yang dikalibrasi sesuai dengan data diatas</strong><br/>
-                                <i>The calibration results only apply to calibrated instruments according to the above data</i><br/>
-                                <strong>Alat ini harus dikalibrasi ulang sesuai jadwal yang direkomendasikan.</strong><br/>
-                                <i>This instrument must be recalibrated according to the recommended schedule.</i><br/>
-                                <strong>Jika ditemukan penyimpangan, segera lakukan tindakan korektif.</strong><br/>
-                                <i>If any deviation is found, corrective action should be taken immediately.</i>
+                                <strong><t t-esc="doc.keterangan"/></strong><br/>
+                                <i><t t-esc="doc.note"/></i>
                             </td>
+<!--                            <td>-->
+<!--                                <strong>Hasil kalibrasi hanya berlaku untuk instrument yang dikalibrasi sesuai dengan data diatas</strong><br/>-->
+<!--                                <i>The calibration results only apply to calibrated instruments according to the above data</i><br/>-->
+<!--                                <strong>Alat ini harus dikalibrasi ulang sesuai jadwal yang direkomendasikan.</strong><br/>-->
+<!--                                <i>This instrument must be recalibrated according to the recommended schedule.</i><br/>-->
+<!--                                <strong>Jika ditemukan penyimpangan, segera lakukan tindakan korektif.</strong><br/>-->
+<!--                                <i>If any deviation is found, corrective action should be taken immediately.</i>-->
+<!--                            </td>-->
                         </tr>
                     </table>
                     <table width="100%" border="0" style="border-collapse: collapse; text-align: left; font-size: 12px !important">

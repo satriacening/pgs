@@ -48,7 +48,7 @@
                     }
 
                     .td-label {
-                        width: 18%;
+                        width: 20%;
                         padding: 1px 5px;
                         vertical-align: top;
                         text-align: left;
@@ -64,7 +64,7 @@
                         white-space: nowrap;
                     }
                     .td-value {
-                        width: 30%;
+                        width: 28%;
                         padding: 1px 5px;
                         line-height: 1;
                         vertical-align: middle;

@@ -46,6 +46,35 @@
                     .text-align-left td {
                         text-align: left;
                     }
+
+                    .td-label {
+                        width: 18%;
+                        padding: 1px 5px;
+                        vertical-align: top;
+                        text-align: left;
+                        line-height: 1;
+                        vertical-align: middle;
+                    }
+                    .td-colon {
+                        width: 2%;
+                        padding: 1px 5px;
+                        line-height: 1;
+                        vertical-align: middle;
+                        text-align: center;
+                        white-space: nowrap;
+                    }
+                    .td-value {
+                        width: 30%;
+                        padding: 1px 5px;
+                        line-height: 1;
+                        vertical-align: middle;
+                    }
+                    .indent {
+                        text-indent: 20px;
+                    }
+
+
+
             </style>
 
             <div class="header">
@@ -80,174 +109,174 @@
                     </h2>
                     <table width="100%" border="0" style="border-collapse: collapse; text-align: left; font-size: 12px !important">
                         <tr>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Identitas Alat</strong></td>
-                            <td/>
-                            <td/>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nomor Sertifikat</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.certification_number"/></td>
+                            <td class="td-label"><strong>Identitas Alat</strong></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"><strong>Nomor Sertifikat</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.certification_number"/></td>
                         </tr>
                         <tr>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Instrument's Details</i></td>
-                            <td/>
-                            <td/>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Certificate Number</i></td>
-                            <td/>
-                            <td/>
+                            <td class="td-label"><i>Instrument's Details</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"><i>Certificate Number</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama Alat</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.instrument_name"/></td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Halaman</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.page"/></td>
+                            <td class="td-label indent"><strong>Nama Alat</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.instrument_name"/></td>
+                            <td class="td-label"><strong>Halaman</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.page"/></td>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Instrument's Name</i></td>
-                            <td/>
-                            <td/>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Page</i></td>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Instrument's Name</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"><i>Page</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Pabrik</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.manufacturer"/></td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Pabrik</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.manufacturer"/></td>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Manufacturer</i></td>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Manufacturer</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tipe</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.type"/></td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Identitas Pemilik</strong></td>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Tipe</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.type"/></td>
+                            <td class="td-label"><strong>Identitas Pemilik</strong></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Type</i></td>
-                            <td/>
-                            <td/>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Owner Details</i></td>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Type</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"><i>Owner Details</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nomor Seri/ID</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.serial_number"/></td>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Nama</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.owner_name.name"/></td>
+                            <td class="td-label indent"><strong>Nomor Seri/ID</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.serial_number"/></td>
+                            <td class="td-label indent"><strong>Nama</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.owner_name.name"/></td>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Serial Number/ID</i></td>
-                            <td/>
-                            <td/>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Name</i></td>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Serial Number/ID</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label indent"><i>Name</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Pembuatan</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.manufacture_date"/></td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Tanggal Pembuatan</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.manufacture_date"/></td>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Manufacture Date</i></td>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Manufacture Date</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Prinsip Deteksi</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.detection_principle"/></td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Prinsip Deteksi</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.detection_principle"/></td>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Detection Principle</i></td>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Detection Principle</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Lokasi</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td rowspan="3" style="max-width: 200px; word-wrap: break-word; white-space: normal; padding: 1px 5px; line-height: 1; vertical-align: top;">
+                            <td class="td-label indent"><strong>Lokasi</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value" rowspan="3">
                                 <t t-esc="doc.location"/>
                             </td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Location</i></td>
-                            <td/>
-<!--                            <td/>-->
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Location</i></td>
+<!--                            <td class="td-colon"/>-->
+<!--                            <td class="td-value"/>-->
+<!--                            <td class="td-label"/>-->
+<!--                            <td class="td-colon"/>-->
+<!--                            <td class="td-value"/>-->
                         </tr>
                         <tr>
-                            <td/>
-                            <td/>
-<!--                            <td/>-->
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label"/>
+<!--                            <td class="td-colon"/>-->
+<!--                            <td class="td-value"/>-->
+<!--                            <td class="td-label"/>-->
+<!--                            <td class="td-colon"/>-->
+<!--                            <td class="td-value"/>-->
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Tanggal Kalibrasi</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.calibration_date"/></td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Tanggal Kalibrasi</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.calibration_date"/></td>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Calibration Date</i></td>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Calibration Date</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><strong>Kalibrasi Selanjutnya</strong></td>
-                            <td style="width: 30px; padding: 1px 5px; line-height: 1; vertical-align: middle;">:</td>
-                            <td style="padding: 1px 5px; line-height: 1; vertical-align: middle;"><t t-esc="doc.next_calibration_date"/></td>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><strong>Kalibrasi Selanjutnya</strong></td>
+                            <td class="td-colon">:</td>
+                            <td class="td-value"><t t-esc="doc.next_calibration_date"/></td>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                         <tr>
-                            <td style="text-indent: 20px; padding-left: 10px; padding: 1px 5px; line-height: 1; vertical-align: middle;"><i>Next Calibration</i></td>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
-                            <td/>
+                            <td class="td-label indent"><i>Next Calibration</i></td>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
+                            <td class="td-label"/>
+                            <td class="td-colon"/>
+                            <td class="td-value"/>
                         </tr>
                     </table>
                     <h2 style="text-align: center; font-size: 16px; font-weight: bold; color: #1F4E78; text-transform: uppercase; margin-top: 5px; margin-bottom: 5px; line-height: 1.2;">

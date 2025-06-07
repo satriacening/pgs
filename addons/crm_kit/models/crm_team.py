@@ -28,6 +28,6 @@ class CrmTeam(models.Model):
     """
     _inherit = 'crm.team'
 
-    commission_id = fields.Many2one('crm.commission',
+    commission_id = fields.Many2many('crm.commission',
                                     string='Commission Plan',
                                     help='Commission Plan')

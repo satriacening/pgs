@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
         <field name="arch" type="xml">
             <field name="alias_contact" position="after">
-                <field name="commission_id"/>
+                <field name="commission_id" widget="many2many_tags"/>
             </field>
         </field>
     </record>

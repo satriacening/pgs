@@ -145,17 +145,26 @@ export class CRMDashboard extends Component {
             .then(function(res) {
                 self.top_sp_by_invoice = res['sales_person_invoice'];
             });
-        var def14 = jsonrpc('/web/dataset/call_kw/crm.lead/get_commission', {
+        var def14 = jsonrpc('/web/dataset/call_kw/crm.lead/get_commission_person', {
                 model: "crm.lead",
-                method: "get_commission",
+                method: "get_commission_person",
                 args: [{}],
                 kwargs: {},
             })
             .then(function(res) {
-                self.commission_report = res['commission'];
+                self.commission_report_person = res['commission'];
+            });
+        var def15 = jsonrpc('/web/dataset/call_kw/crm.lead/get_commission_team', {
+                model: "crm.lead",
+                method: "get_commission_team",
+                args: [{}],
+                kwargs: {},
+            })
+            .then(function(res) {
+                self.commission_report_team = res['commission'];
             });
 
-        return $.when(def0, def1, def2, def3, def4, def5, def6, def8, def9, def10, def11, def12, def13, def14);
+        return $.when(def0, def1, def2, def3, def4, def5, def6, def8, def9, def10, def11, def12, def13, def14, def15);
     }
     /**
      * Handles the change event for income and expense values.

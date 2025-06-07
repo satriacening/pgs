@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="pgs_certificate_search_views" model="ir.ui.view">
+        <field name="name">pgs.certificate.search.views</field>
+        <field name="model">pgs.certificate</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="instrument_name"/>
+                <field name="manufacturer"/>
+                <field name="manufacture_date"/>
+                <field name="type"/>
+                <field name="serial_number"/>
+                <field name="location"/>
+                <field name="detection_principle"/>
+                <field name="calibration_date"/>
+                <field name="next_calibration_date"/>
+                <field name="certification_number"/>
+                <field name="owner_name"/>
+                <field name="page"/>
+                <field name="cylinder_gas"/>
+                <field name="calibration_procedure"/>
+                <field name="inspector"/>
+                <field name="inspected_date"/>
+                <field name="replaced_part"/>
+                <field name="keterangan"/>
+                <field name="note"/>
+            </search>
+        </field>
+    </record>
+
+
     <record id="pgs_certificate_tree_views" model="ir.ui.view">
         <field name="name">pgs.certificate.tree.views</field>
         <field name="model">pgs.certificate</field>
@@ -72,6 +101,8 @@
                             <field name="inspector"/>
                             <field name="inspected_date"/>
                             <field name="replaced_part"/>
+                            <field name="keterangan"/>
+                            <field name="note"/>
                         </group>
                     </group>
                     <notebook>

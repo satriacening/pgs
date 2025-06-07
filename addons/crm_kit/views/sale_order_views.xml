@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_form_inherit_commission" model="ir.ui.view">
+        <field name="name">res.sale.form.inherit.commission</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="po_number"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_sale_tree_inherit_commission" model="ir.ui.view">
+        <field name="name">res.sale.tree.inherit.commission</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="po_number"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

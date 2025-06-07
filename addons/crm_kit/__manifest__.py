@@ -36,6 +36,7 @@
         'views/crm_commission_views.xml',
         'views/crm_team_views.xml',
         'views/res_users_views.xml',
+        'views/sale_order_views.xml',
         'wizard/commission_report_views.xml',
     ],
     'assets': {

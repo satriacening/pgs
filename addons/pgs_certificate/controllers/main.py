@@ -10,27 +10,32 @@ class CertificateSearchController(http.Controller):
 
     @http.route('/certificate/search', type='http', auth='public', website=True)
     def certificate_search(self, **kwargs):
-        cert_no = kwargs.get('certification_number')
-        serial_no = kwargs.get('serial_number')
-        instrument = kwargs.get('instrument_name')
+        cert_no = kwargs.get('certification_number', '').strip()
+        serial_no = kwargs.get('serial_number', '').strip()
+        instrument = kwargs.get('instrument_name', '').strip()
         wa_number = request.env['ir.config_parameter'].sudo().get_param('pgs_certificate.wa_number')
 
-        domain = []
-        if cert_no:
-            domain.append(('certification_number', 'ilike', cert_no))
-        if serial_no:
-            domain.append(('serial_number', 'ilike', serial_no))
-        if instrument:
-            domain.append(('instrument_name', 'ilike', instrument))
-
-        results = request.env['pgs.certificate'].sudo().search(domain) if domain else []
+        error_message = ''
+        results = []
+        if request.httprequest.method == 'GET' and (cert_no or serial_no or instrument):
+            if not cert_no or not serial_no:
+                error_message = 'Nomor Sertifikat dan Serial Number wajib diisi.'
+            else:
+                domain = [
+                    ('certification_number', 'ilike', cert_no),
+                    ('serial_number', 'ilike', serial_no)
+                ]
+                if instrument:
+                    domain.append(('instrument_name', 'ilike', instrument))
+                results = request.env['pgs.certificate'].sudo().search(domain)
 
         return request.render('pgs_certificate.certificate_search_template', {
-            'certification_number': cert_no or '',
-            'serial_number': serial_no or '',
-            'instrument_name': instrument or '',
+            'certification_number': cert_no,
+            'serial_number': serial_no,
+            'instrument_name': instrument,
             'wa_number': wa_number,
-            'results': results
+            'results': results,
+            'error_message': error_message,
         })
 
     @http.route('/certificate/report/<int:cert_id>', type='http', auth='public', website=True)

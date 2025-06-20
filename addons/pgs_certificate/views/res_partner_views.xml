@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Certificates">
+                <page string="Certificates" groups="pgs_certificate.group_admin_certificate">
                     <field name="certificate_ids">
                         <tree>
                             <field name="instrument_name"/>
